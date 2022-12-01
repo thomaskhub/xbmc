@@ -657,16 +657,18 @@ bool CApplication::CreateGUI()
   // Set default screen saver mode
   auto screensaverModeSetting = std::static_pointer_cast<CSettingString>(settings->GetSetting(CSettings::SETTING_SCREENSAVER_MODE));
   // Can only set this after windowing has been initialized since it depends on it
-  if (CServiceBroker::GetWinSystem()->GetOSScreenSaver())
-  {
-    // If OS has a screen saver, use it by default
-    screensaverModeSetting->SetDefault("");
-  }
-  else
-  {
+  
+  // if (CServiceBroker::GetWinSystem()->GetOSScreenSaver())
+  // {
+  //   // If OS has a screen saver, use it by default
+  //   screensaverModeSetting->SetDefault("");
+  // }
+  // else
+  // {
     // If OS has no screen saver, use Kodi one by default
-    screensaverModeSetting->SetDefault("screensaver.xbmc.builtin.dim");
-  }
+  // }
+  //always take the in build screen saver
+  screensaverModeSetting->SetDefault("screensaver.xbmc.builtin.black");
 
   if (sav_res)
     CDisplaySettings::GetInstance().SetCurrentResolution(RES_DESKTOP, true);
@@ -3119,7 +3121,9 @@ void CApplication::PlaybackCleanup()
     if(CServiceBroker::GetGUI()->GetWindowManager().GetActiveWindow() == WINDOW_FULLSCREEN_VIDEO ||
        CServiceBroker::GetGUI()->GetWindowManager().GetActiveWindow() == WINDOW_FULLSCREEN_GAME)
     {
-      CServiceBroker::GetGUI()->GetWindowManager().PreviousWindow();
+      CServiceBroker::GetGUI()->GetWindowManager().PreviousWindow(); //Thomas
+      ActivateScreenSaver(true); //Thomas
+      
     }
     else
     {
@@ -3750,7 +3754,7 @@ void CApplication::CheckScreenSaverAndDPMS()
     WakeUpScreenSaver();
   }
   else if (maybeScreensaver
-           && elapsed > CServiceBroker::GetSettingsComponent()->GetSettings()->GetInt(CSettings::SETTING_SCREENSAVER_TIME) * 60)
+           && elapsed > CServiceBroker::GetSettingsComponent()->GetSettings()->GetInt(CSettings::SETTING_SCREENSAVER_TIME))
   {
     ActivateScreenSaver();
   }

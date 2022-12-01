@@ -19,8 +19,9 @@ CGUIWindowScreensaverDim::CGUIWindowScreensaverDim(void)
   : CGUIDialog(WINDOW_SCREENSAVER_DIM, "", DialogModalityType::MODELESS)
 {
   m_needsScaling = false;
-  m_animations.push_back(CAnimation::CreateFader(0, 100, 0, 1000, ANIM_TYPE_WINDOW_OPEN));
-  m_animations.push_back(CAnimation::CreateFader(100, 0, 0, 1000, ANIM_TYPE_WINDOW_CLOSE));
+  //Disabled fading so that screen saver comes up automatically
+  // m_animations.push_back(CAnimation::CreateFader(0, 100, 0, 1000, ANIM_TYPE_WINDOW_OPEN));
+  // m_animations.push_back(CAnimation::CreateFader(100, 0, 0, 1000, ANIM_TYPE_WINDOW_CLOSE));
   m_renderOrder = RENDER_ORDER_WINDOW_SCREENSAVER;
 }
 
@@ -39,10 +40,8 @@ void CGUIWindowScreensaverDim::UpdateVisibility()
       ADDON::AddonPtr info;
       CServiceBroker::GetAddonMgr().GetAddon(usedId, info, ADDON::ADDON_SCREENSAVER,
                                              ADDON::OnlyEnabled::YES);
-      if (info && !info->GetSetting("level").empty())
-        m_newDimLevel = 100.0f - (float)atof(info->GetSetting("level").c_str());
-      else
-        m_newDimLevel = 100.0f;
+      //Thomas:: Ignore the dim level so that its always black
+      m_newDimLevel = 100.0f;
       Open();
     }
   }

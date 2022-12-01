@@ -1381,12 +1381,6 @@ bool JsonRpcMethod::Parse(const CVariant& value)
            !parameter["extends"].isArray()))
       {
         CLog::Log(LOGDEBUG, "JSONRPC: Method %s has a badly defined parameter", name.c_str());
-        std::cout << "Thomas parse --> badly defined " << parameter.isMember("name") << std::endl;
-        std::cout << "Thomas parse --> badly defined " << parameter["name"].isString() << std::endl;
-        std::cout << "Thomas parse --> badly defined " << parameter.isMember("type") << std::endl;
-        std::cout << "Thomas parse --> badly defined " << parameter["type"].isString() << std::endl;
-        std::cout << "Thomas parse --> badly defined " << parameter.isMember("$ref") << std::endl;
-        std::cout << "Thomas parse --> badly defined " << parameter["$ref"].isString() << std::endl;
         return false;
       }
 
@@ -1397,7 +1391,6 @@ bool JsonRpcMethod::Parse(const CVariant& value)
       if (!parseParameter(parameter, param))
       {
         missingReference = param->missingReference;
-        std::cout << "Thomas parse --> missing regerence" << std::endl;
         return false;
       }
       parameters.push_back(param);
@@ -1408,7 +1401,6 @@ bool JsonRpcMethod::Parse(const CVariant& value)
   if (!parseReturn(value))
   {
     missingReference = returns->missingReference;
-    std::cout << "Thomas parse --> missing ref 2" << std::endl;
     return false;
   }
 
@@ -1594,7 +1586,6 @@ bool CJSONServiceDescription::addMethod(const std::string& jsonMethod, MethodCal
 {
   CVariant descriptionObject;
   std::string methodName;
-  // std::cout << "THoms addMethod --> " << jsonMethod << std::endl;
 
   std::string modJsonMethod = jsonMethod;
   // Make sure the method description actually exists and represents an object
@@ -1602,7 +1593,6 @@ bool CJSONServiceDescription::addMethod(const std::string& jsonMethod, MethodCal
   {
     CLog::Log(LOGERROR, "JSONRPC: Invalid JSON Schema definition for method \"%s\"",
               methodName.c_str());
-    std::cout << "THoms addMethod schema error --> " << jsonMethod << std::endl;
     return false;
   }
 
@@ -1610,7 +1600,7 @@ bool CJSONServiceDescription::addMethod(const std::string& jsonMethod, MethodCal
   {
     CLog::Log(LOGERROR, "JSONRPC: There already is a method with the name \"%s\"",
               methodName.c_str());
-    std::cout << "THoms addMethod alredy exists --> " << jsonMethod << std::endl;
+
     return false;
   }
 
@@ -1618,7 +1608,7 @@ bool CJSONServiceDescription::addMethod(const std::string& jsonMethod, MethodCal
   if (type.compare("method") != 0)
   {
     CLog::Log(LOGERROR, "JSONRPC: Invalid JSON type for method \"%s\"", methodName.c_str());
-    std::cout << "THoms addMethod INVALID JSON type --> " << jsonMethod << std::endl;
+
     return false;
   }
 
@@ -1637,7 +1627,6 @@ bool CJSONServiceDescription::addMethod(const std::string& jsonMethod, MethodCal
     if (method == NULL)
     {
       CLog::Log(LOGERROR, "JSONRPC: Missing implementation for method \"%s\"", methodName.c_str());
-      std::cout << "THoms addMethod missign implementation  error --> " << jsonMethod << std::endl;
       return false;
     }
   }
@@ -1652,7 +1641,6 @@ bool CJSONServiceDescription::addMethod(const std::string& jsonMethod, MethodCal
     CLog::Log(LOGERROR, "JSONRPC: Could not parse method \"%s\"", methodName.c_str());
     if (!newMethod.missingReference.empty())
     {
-      std::cout << "THoms addMethod missing reference" << std::endl;
       IncompleteSchemaDefinition incomplete;
       incomplete.Schema = modJsonMethod;
       incomplete.Type = SchemaDefinitionMethod;
@@ -1671,13 +1659,10 @@ bool CJSONServiceDescription::addMethod(const std::string& jsonMethod, MethodCal
       m_incompleteDefinitions[newMethod.missingReference].push_back(incomplete);
     }
 
-    std::cout << "THoms addMethod could not parse method--> " << methodName.c_str() << std::endl;
-
     return false;
   }
 
   m_actionMap.add(newMethod);
-  std::cout << "THoms addMethod added" << std::endl;
   return true;
 }
 
