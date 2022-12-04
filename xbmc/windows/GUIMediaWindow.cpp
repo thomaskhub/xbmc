@@ -781,10 +781,13 @@ bool CGUIMediaWindow::GetDirectory(const std::string &strDirectory, CFileItemLis
   if (!bHideParent)
   {
     CFileItemPtr pItem(new CFileItem(".."));
+    //Thomas:: hide the parent path in the file view for nice navigation
+    if (strParentPath.length() > 0) {
     pItem->SetPath(strParentPath);
     pItem->m_bIsFolder = true;
     pItem->m_bIsShareOrDrive = false;
     items.AddFront(pItem, 0);
+  }
   }
 
   int iWindow = GetID();

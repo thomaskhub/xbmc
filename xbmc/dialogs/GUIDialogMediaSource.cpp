@@ -266,12 +266,12 @@ void CGUIDialogMediaSource::OnPathBrowse(int item)
       extraShares.push_back(share1);
     }
 #endif
-
+    //Thomas:: do not add the music playlist to source selection
     // add the music playlist location
-    share1.strPath = "special://musicplaylists/";
-    share1.strName = g_localizeStrings.Get(20011);
-    share1.m_ignore = true;
-    extraShares.push_back(share1);
+    // share1.strPath = "special://musicplaylists/";
+    // share1.strName = g_localizeStrings.Get(20011);
+    // share1.m_ignore = true;
+    // extraShares.push_back(share1);
 
     // add the recordings dir as needed
     if (CPVRDirectory::HasRadioRecordings())

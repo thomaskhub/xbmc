@@ -418,15 +418,16 @@ void CGUIDialogFileBrowser::Update(const std::string &strDirectory)
 
   OnSort();
 
-  if (m_Directory->GetPath().empty() && m_addNetworkShareEnabled &&
-     (CServiceBroker::GetSettingsComponent()->GetProfileManager()->GetMasterProfile().getLockMode() == LOCK_MODE_EVERYONE ||
-      CServiceBroker::GetSettingsComponent()->GetProfileManager()->IsMasterProfile() || g_passwordManager.bMasterUser))
-  { // we are in the virtual directory - add the "Add Network Location" item
-    CFileItemPtr pItem(new CFileItem(g_localizeStrings.Get(1032)));
-    pItem->SetPath("net://");
-    pItem->m_bIsFolder = true;
-    m_vecItems->Add(pItem);
-  }
+  //Thomas:: do not add options for adding network locations when selection source directories
+  // if (m_Directory->GetPath().empty() && m_addNetworkShareEnabled &&
+  //    (CServiceBroker::GetSettingsComponent()->GetProfileManager()->GetMasterProfile().getLockMode() == LOCK_MODE_EVERYONE ||
+  //     CServiceBroker::GetSettingsComponent()->GetProfileManager()->IsMasterProfile() || g_passwordManager.bMasterUser))
+  // { // we are in the virtual directory - add the "Add Network Location" item
+  //   CFileItemPtr pItem(new CFileItem(g_localizeStrings.Get(1032)));
+  //   pItem->SetPath("net://");
+  //   pItem->m_bIsFolder = true;
+  //   m_vecItems->Add(pItem);
+  // }
   if (m_Directory->GetPath().empty() && !m_addSourceType.empty())
   {
     CFileItemPtr pItem(new CFileItem(g_localizeStrings.Get(21359)));
@@ -526,7 +527,8 @@ void CGUIDialogFileBrowser::OnClick(int iItem)
   {
     if (pItem->GetPath() == "net://")
     { // special "Add Network Location" item
-      OnAddNetworkLocation();
+      // Thomas:: Do not allow to add any network locations
+      //OnAddNetworkLocation();
       return;
     }
     if (pItem->GetPath() == "source://")

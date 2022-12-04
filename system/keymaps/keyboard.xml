@@ -168,6 +168,8 @@
       <d mod="ctrl,shift">ToggleDebug</d>
       <r mod="ctrl,shift">ToggleDirtyRegionVisualization</r>
       <f11>HDRToggle</f11>
+      <f5>ReloadSkin</f5>
+
     </keyboard>
   </global>
   <LoginScreen>

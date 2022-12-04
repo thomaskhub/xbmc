@@ -165,6 +165,8 @@ void CMediaManager::GetRemovableDrives(VECSOURCES &removableDrives)
 
 void CMediaManager::GetNetworkLocations(VECSOURCES &locations, bool autolocations)
 {
+  //Thomas:: never return any network locations
+  return;
   // Load our xml file
   LoadSources();
   for (unsigned int i = 0; i < m_locations.size(); i++)

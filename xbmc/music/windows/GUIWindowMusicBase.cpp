@@ -1212,7 +1212,7 @@ void CGUIWindowMusicBase::OnAssignContent(const std::string& oldName, const CMed
   DialogResponse rep = DialogResponse::CUSTOM;
   while (rep == DialogResponse::CUSTOM)
   {
-    rep = HELPERS::ShowYesNoCustomDialog(CVariant{20444}, CVariant{20447}, CVariant{106}, CVariant{107}, CVariant{10004});
+    rep = HELPERS::ShowYesNoDialogText(CVariant{20444}, CVariant{20447}, CVariant{106}, CVariant{107});
     if (rep == DialogResponse::CUSTOM)
       // Edit default info provider settings so can be applied during scan
       CGUIDialogInfoProviderSettings::Show();
