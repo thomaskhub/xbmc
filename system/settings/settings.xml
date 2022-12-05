@@ -3441,7 +3441,7 @@
       <group id="1" label="24997">
         <setting id="lookandfeel.skin" type="addon" label="166" help="36103">
           <level>0</level>
-          <default>skin.isha</default>
+          <default>skin.simple</default>
           <constraints>
             <addontype>xbmc.gui.skin</addontype>
           </constraints>
@@ -3469,7 +3469,7 @@
         </setting>
         <setting id="lookandfeel.skincolors" type="string" parent="lookandfeel.skin" label="14078" help="36106">
           <level>1</level>
-          <default>SKINDEFAULT</default>
+          <default>midnight</default>
           <constraints>
             <options>skincolors</options>
           </constraints>
@@ -3682,7 +3682,7 @@
       <group id="1" label="16000">
         <setting id="screensaver.mode" type="addon" label="356" help="36130">
           <level>0</level>
-          <default>default</default> <!-- will be properly set on startup -->
+          <default>screensaver.black</default> <!-- will be properly set on startup -->
           <constraints>
             <addontype>xbmc.ui.screensaver</addontype>
             <allowempty>true</allowempty>
@@ -3715,7 +3715,7 @@
         </setting>
         <setting id="screensaver.time" type="integer" label="355" help="36129">
           <level>0</level>
-          <default>3</default>
+          <default>5</default>
           <constraints>
             <minimum>1</minimum>
             <step>1</step>

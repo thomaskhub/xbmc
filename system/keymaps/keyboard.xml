@@ -110,10 +110,10 @@
       <blue>ActivateWindow(Pictures)</blue>
       <!-- Multimedia keyboard keys -->
       <browser_back>Back</browser_back>
-      <browser_forward/>
-      <browser_refresh/>
-      <browser_stop/>
-      <browser_search/>
+      <browser_forward />
+      <browser_refresh />
+      <browser_stop />
+      <browser_search />
       <browser_favorites>ActivateWindow(Favourites)</browser_favorites>
       <favorites>ActivateWindow(Favourites)</favorites>
       <config>ActivateWindow(Settings)</config>
@@ -129,46 +129,37 @@
       <play_pause mod="longpress">Info</play_pause>
       <fastforward>FastForward</fastforward>
       <rewind>Rewind</rewind>
-      <record/>
+      <record />
       <launch_mail></launch_mail>
       <launch_media_select>ActivateWindow(Music)</launch_media_select>
       <launch_app1_pc_icon>ActivateWindow(Programs)</launch_app1_pc_icon>
       <launch_app2_pc_icon>ActivateWindow(Programs)</launch_app2_pc_icon>
-      <launch_file_browser/>
-      <launch_media_center/>
+      <launch_file_browser />
+      <launch_media_center />
       <!-- ****************************************************** -->
       <!-- MS Media Center keyboard shortcuts sent by MCE remotes -->
       <!-- See http://msdn.microsoft.com/en-us/library/bb189249.aspx -->
-      <p mod="ctrl,shift">Play</p>        <!-- Play -->
-      <s mod="ctrl,shift">Stop</s>        <!-- Stop -->
-      <p mod="ctrl">Pause</p>             <!-- Pause -->
+      <p mod="ctrl,shift">Play</p> <!-- Play -->
+      <s mod="ctrl,shift">Stop</s> <!-- Stop -->
+      <p mod="ctrl">Pause</p> <!-- Pause -->
       <f mod="ctrl,shift">FastForward</f> <!-- Fwd -->
-      <b mod="ctrl,shift">Rewind</b>      <!-- Rew -->
-      <f mod="ctrl">SkipNext</f>          <!-- Skip -->
-      <b mod="ctrl">SkipPrevious</b>      <!-- Replay -->
-      <d mod="ctrl">Info</d>              <!-- MCE Details -->
-      <r mod="ctrl">Record</r>            <!-- Record -->
-      <f4 mod="alt">PreviousMenu</f4>     <!-- Exit -->
-      <f10>VolumeUp</f10>                 <!-- MCE Vol up -->
-      <f9>VolumeDown</f9>                 <!-- MCE Vol down -->
-      <f8>Mute</f8>                       <!-- MCE mute -->
-      <g mod="ctrl">ActivateWindow(TVGuide)</g>  <!-- MCE Guide -->
-      <m mod="ctrl">ActivateWindow(music)</m>    <!-- MCE My music -->
-      <i mod="ctrl">ActivateWindow(pictures)</i> <!-- MCE My pictures -->
-      <e mod="ctrl">ActivateWindow(videos)</e>    <!-- MCE videos -->
-      <m mod="ctrl,shift">PlayerControl(ShowVideoMenu)</m>         <!-- MCE DVD menu -->
-      <o mod="ctrl">ActivateWindow(TVRecordings)</o>  <!-- MCE Recorded TV -->
-      <t mod="ctrl">ActivateWindow(TVChannels)</t>  <!-- MCE Live TV  -->
-      <t mod="ctrl,shift">ActivateWindow(TVChannels)</t>  <!-- MCE TV -->
-      <a mod="ctrl">ActivateWindow(RadioChannels)</a>  <!-- MCE Radio -->
+      <b mod="ctrl,shift">Rewind</b> <!-- Rew -->
+      <f mod="ctrl">SkipNext</f> <!-- Skip -->
+      <b mod="ctrl">SkipPrevious</b> <!-- Replay -->
+      <d mod="ctrl">Info</d> <!-- MCE Details -->
+      <r mod="ctrl">Record</r> <!-- Record -->
+      <f4 mod="alt">PreviousMenu</f4> <!-- Exit -->
+      <f10>VolumeUp</f10> <!-- MCE Vol up -->
+      <f9>VolumeDown</f9> <!-- MCE Vol down -->
+      <f8>Mute</f8> <!-- MCE mute -->
       <!-- MCE keypresses without an obvious use in Kodi -->
       <u mod="ctrl">Notification(MCEKeypress, DVD subtitle, 3)</u>
       <a mod="ctrl,shift">Notification(MCEKeypress, DVD audio, 3)</a>
       <k mod="ctrl,shift">ReloadKeymaps</k>
       <d mod="ctrl,shift">ToggleDebug</d>
       <r mod="ctrl,shift">ToggleDirtyRegionVisualization</r>
-      <f11>HDRToggle</f11>
       <f5>ReloadSkin</f5>
+      <f6>reloadkeymaps</f6>
 
     </keyboard>
   </global>
@@ -351,10 +342,13 @@
       <r>Rewind</r>
       <period>StepForward</period>
       <comma>StepBack</comma>
-      <backspace>Fullscreen</backspace>
+      <backspace>noop</backspace>
+      <browser_back>noop</browser_back>
+      <!-- <backspace>Fullscreen</backspace>
       <backspace mod="longpress">Stop</backspace>
-      <browser_back>Fullscreen</browser_back>
-      <browser_back mod="longpress">Stop</browser_back>
+      <browser_back>Fulls
+        creen</browser_back>
+      <browser_back mod="longpress">Stop</browser_back> -->
       <quote>Seek(-7)</quote> <!-- Replaces smallstepback -->
       <opensquarebracket>BigStepForward</opensquarebracket>
       <closesquarebracket>BigStepBack</closesquarebracket>
@@ -379,11 +373,9 @@
       <down>ChapterOrBigStepBack</down>
       <up mod="longpress">AudioNextLanguage</up>
       <down mod="longpress">NextSubtitle</down>
-      <left mod="alt">PlayerControl(tempodown)</left>
-      <right mod="alt">PlayerControl(tempoup)</right>
       <a>AudioDelay</a>
       <a mod="ctrl">AudioNextLanguage</a>
-      <escape>Fullscreen</escape>
+      <escape>noop</escape>
       <c>Playlist</c>
       <v>ActivateWindow(Teletext)</v>
       <v mod="ctrl">VideoNextStream</v>
@@ -400,31 +392,6 @@
       <f11 mod="alt">CycleToneMapMethod</f11>
     </keyboard>
   </FullscreenVideo>
-  <FullscreenGame>
-    <keyboard>
-      <f>FastForward</f>
-      <r>Rewind</r>
-      <backspace>OSD</backspace>
-      <backspace mod="longpress">Stop</backspace>
-      <browser_back>OSD</browser_back>
-      <browser_back mod="longpress">Stop</browser_back>
-      <return>OSD</return>
-      <enter>OSD</enter>
-      <m>OSD</m>
-      <menu>OSD</menu>
-      <i>Info</i>
-      <o>CodecInfo</o>
-      <z>AspectRatio</z>
-      <zoom>AspectRatio</zoom>
-      <escape>OSD</escape>
-    </keyboard>
-  </FullscreenGame>
-  <GameOSD>
-    <keyboard>
-      <m>OSD</m>
-      <menu>OSD</menu>
-    </keyboard>
-  </GameOSD>
   <VideoTimeSeek>
     <keyboard>
       <return>Select</return>
@@ -578,7 +545,7 @@
       <a>AudioDelay</a>
       <escape>Fullscreen</escape>
       <return>Select</return>
-      <enter>Select</enter>      <!-- backspace>Fullscreen</backspace -->
+      <enter>Select</enter> <!-- backspace>Fullscreen</backspace -->
       <pageup>SkipNext</pageup>
       <pagedown>SkipPrevious</pagedown>
     </keyboard>
@@ -605,7 +572,8 @@
       <delete>Delete</delete>
       <n>Playlist</n>
       <w>ToggleWatched</w>
-      <backspace mod="longpress">ActivateWindow(Home)</backspace>
+      <backspace>noop</backspace>
+      <!-- <backspace mod="longpress">ActivateWindow(Home)</backspace> -->
     </keyboard>
   </Videos>
   <VideoPlaylist>
