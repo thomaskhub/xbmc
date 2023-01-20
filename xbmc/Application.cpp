@@ -4218,7 +4218,15 @@ void CApplication::ConfigureAndEnableAddons()
         m_ServiceManager->GetPlatform().IsConfigureAddonsAtStartupEnabled();
 
     for (const auto& addon : disabledAddons)
-    {
+    { 
+
+      //Enable our custom script for slide show, this is not the best way of doing 
+      //this but not sure how we can enable a addon by default
+      if(!strcmp(addon->ID().c_str(), "script.autopause")){
+        addonMgr.EnableAddon(addon->ID());
+        continue;
+      }
+
       if (addonMgr.IsAddonDisabledWithReason(addon->ID(), ADDON::AddonDisabledReason::INCOMPATIBLE))
       {
         auto addonInfo = addonMgr.GetAddonInfo(addon->ID());

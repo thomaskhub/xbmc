@@ -1,0 +1,15 @@
+<!-- Placed in
+    <your Kodi install dir>\addons\skin.simple\xml
+
+    Kodi documentation on skinning
+    https://kodi.wiki/view/Skinning
+    https://kodi.wiki/view/Skinning_Manual
+    https://kodi.wiki/view/HOW-TO:Add_a_new_view_type_to_the_skin
+    https://kodi.wiki/view/HOW-TO:Add_a_new_window_or_dialog_via_skinning
+ -->
+
+<?xml version="1.0" encoding="utf-8"?>
+<window id="1200" type="window">
+    <backgroundcolor>black</backgroundcolor>
+    <stretchmode>Fullscreen</stretchmode>
+</window>

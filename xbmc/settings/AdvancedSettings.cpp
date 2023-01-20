@@ -439,7 +439,7 @@ void CAdvancedSettings::Initialize()
       "xvid|.bivx|.vob|.nrg|.img|.iso|.udf|.pva|.wmv|.asf|.asx|.ogm|.m2v|.avi|.bin|.dat|.mpg|.mpeg|"
       ".mp4|.mkv|.mk3d|.avc|.vp3|.svq3|.nuv|.viv|.dv|.fli|.flv|.001|.wpl|.xspf|.zip|.vdr|.dvr-ms|."
       "xsp|.mts|.m2t|.m2ts|.evo|.ogv|.sdp|.avs|.rec|.url|.pxml|.vc1|.h264|.rcv|.rss|.mpls|.mpl|."
-      "webm|.bdmv|.bdm|.wtv|.trp|.f4v|.enc1|.enc2|.enc3";
+      "webm|.bdmv|.bdm|.wtv|.trp|.f4v|.enc1|.enc2|.enc3|.mp3|.wav|.m3u|.wma";
   m_subtitlesExtensions =
       ".utf|.utf8|.utf-8|.sub|.srt|.smi|.rt|.txt|.ssa|.text|.ssa|.aqt|.jss|.ass|.idx|.ifo|.zip";
   m_discStubExtensions = ".disc";

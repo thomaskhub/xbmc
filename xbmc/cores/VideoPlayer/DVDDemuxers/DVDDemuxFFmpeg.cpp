@@ -508,19 +508,23 @@ bool CDVDDemuxFFmpeg::Open(const std::shared_ptr<CDVDInputStream>& pInput, bool 
       {
         av_dict_set(&options, "decryption_key", keyBlob.key1.c_str(), 0);
         av_dict_set(&options, "decryption_iv", keyBlob.iv1.c_str(), 0);
+        strFile.insert(0, "crypto:");
       }
       else if (ext == "enc2")
       {
         av_dict_set(&options, "decryption_key", keyBlob.key2.c_str(), 0);
         av_dict_set(&options, "decryption_iv", keyBlob.iv2.c_str(), 0);
+        strFile.insert(0, "crypto:");
       }
       else if (ext == "enc3")
       {
         av_dict_set(&options, "decryption_key", keyBlob.key3.c_str(), 0);
         av_dict_set(&options, "decryption_iv", keyBlob.iv3.c_str(), 0);
+        strFile.insert(0, "crypto:");
       }
-
-      strFile.insert(0, "crypto:");
+       else if (ext == "mp3") {
+         iformat = av_find_input_format("mp3");
+       }
     }
 
     if (avformat_open_input(&m_pFormatContext, strFile.c_str(), iformat, &options) < 0)

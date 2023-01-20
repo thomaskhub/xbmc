@@ -336,8 +336,31 @@
       <backspace mod="longpress">ActivateWindow(Home)</backspace>
     </keyboard>
   </Music>
+  <window1200>
+    <keyboard>
+      <v>ActivateWindow(Home)</v>
+      <left>PlayerControl(SmallSkipBackward)</left>
+      <right>PlayerControl(SmallSkipForward)</right>
+      <enter>RunScript(special://xbmc/addons/service.autopause/video-keyboard.py, 1)</enter> 
+      <return>RunScript(special://xbmc/addons/service.autopause/video-keyboard.py, 1)</return> 
+      <space>RunScript(special://xbmc/addons/service.autopause/video-keyboard.py, 1)</space> 
+    </keyboard>
+  </window1200>
+  <window1201>
+    <keyboard>
+      <n>ActivateWindow(12006)</n>
+      <b>ActivateWindow(10114)</b>
+      <v>ActivateWindow(10145)</v>
+      <s>ActivateWindow(10145)</s>
+
+      <enter>RunScript(special://xbmc/addons/service.autopause/video-keyboard.py, enter)</enter> 
+      <return>RunScript(special://xbmc/addons/service.autopause/video-keyboard.py, enter)</return> 
+      <space>RunScript(special://xbmc/addons/service.autopause/video-keyboard.py, 1)</space> 
+    </keyboard>
+  </window1201>
   <FullscreenVideo>
     <keyboard>
+      <space>RunScript(special://xbmc/addons/service.autopause/video-keyboard.py, 1)</space>
       <f>FastForward</f>
       <r>Rewind</r>
       <period>StepForward</period>
@@ -523,6 +546,7 @@
   </ScreenCalibration>
   <VideoOSD>
     <keyboard>
+      <space>RunScript(special://xbmc/addons/service.autopause/video-keyboard.py, 1)</space>
       <m>Back</m>
       <menu>Back</menu>
       <g mod="ctrl">Back</g> <!-- MCE Guide button -->
@@ -569,10 +593,11 @@
   </VideoBookmarks>
   <Videos>
     <keyboard>
+      <space>RunScript(special://xbmc/addons/service.autopause/video-keyboard.py, 1)</space>
       <delete>Delete</delete>
       <n>Playlist</n>
       <w>ToggleWatched</w>
-      <backspace>noop</backspace>
+      <!-- <backspace>ActivateWindow(Home)</backspace> -->
       <!-- <backspace mod="longpress">ActivateWindow(Home)</backspace> -->
     </keyboard>
   </Videos>

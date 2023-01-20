@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+    Copy the keyboard.xml into the correct directory.
+    Refer to
+    https://kodi.wiki/view/Keymap 
+-->
+<keymap>
+    <global>
+        <keyboard>
+            <!-- <space>ActivateWindow(1200)</space> -->
+            <space>RunScript(special://xbmcbinaddons/service.ishanga/video-keyboard.py, 1)</space>
+        </keyboard>
+    </global>
+</keymap>

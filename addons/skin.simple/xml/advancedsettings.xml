@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+    Copy the advancedsettings.xml into the correct directory
+    Refer to
+    https://kodi.wiki/view/Advancedsettings.xml
+ -->
+<advancedsettings version="1.0">
+    <videoextensions>
+        <!-- Don't add whitespaces -->
+        <add>.mp3|.m4a</add>
+        <remove></remove>
+    </videoextensions>
+</advancedsettings>

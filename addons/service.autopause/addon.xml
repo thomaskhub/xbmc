@@ -1,0 +1,27 @@
+<addon id="script.autopause" name="Auto Pause after video files" version="0.0.1" provider-name="KK">
+    <requires>
+        <import addon="xbmc.python" version="3.0.0" />
+    </requires>
+    <extension point="xbmc.service" library="main.py"/>
+    <extension point="xbmc.python.script" library="video-keyboard.py" />
+    <extension point="xbmc.python.library" library="utilities.py"/>
+
+    <extension point="kodi.context.item">
+        <menu id="kodi.core.main">
+            <item library="context-menu.py">
+                <label>Play Autopause Playlist</label>
+                <visible>Container.HasFolders | Container.HasFiles</visible>
+            </item>
+        </menu>
+    </extension>
+
+    <extension point="xbmc.addon.metadata">
+        <platform>all</platform>
+        <assets>
+            <icon>resources/icon.png</icon>
+            <fanart>resources/fanart.png></fanart>
+        </assets>
+        <summary>An addon for Playing videos as a slide show</summary>
+        <description>For a video playlist, after a video ends, stop the playlist and show the screensaver. After some user input, play the next video</description>
+    </extension>
+</addon>

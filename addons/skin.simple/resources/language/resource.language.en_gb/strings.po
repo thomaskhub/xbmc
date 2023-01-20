@@ -1,0 +1,37 @@
+# Kodi Media Center language file
+# Addon Name: Ishanga Service
+# Addon id: service.ishanga
+# Addon Provider: Isha Yoga Center IT 
+msgid ""
+msgstr ""
+"Project-Id-Version: XBMC Addons\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Berty\n"
+"Language-Team: English"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: en_GB\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgctxt "#30800"
+msgid "Main"
+msgstr ""
+
+msgctxt "#30801"
+msgid "Dot"
+msgstr ""
+
+msgctxt "#30802"
+msgid "White"
+msgstr ""
+
+msgctxt "#30803"
+msgid "Grey"
+msgstr ""
+
+msgctxt "#30804"
+msgid "Disabled"
+msgstr ""
