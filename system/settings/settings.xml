@@ -2984,7 +2984,7 @@
         <setting id="input.enablejoystick" type="boolean" label="35100" help="36378">
           <level>2</level>
           <control type="toggle" />
-          <default>true</default>
+          <default>false</default>
         </setting>
         <setting id="input.asknewcontrollers" type="boolean">
           <level>0</level>

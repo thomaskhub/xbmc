@@ -10,9 +10,22 @@ from resources.lib import XBMCPlayer
 context_menu = "-------------- Context Menu: "
 
 def sorted_alphanumeric(files):
+    #The file list can contain unsupported files as well so we nee
+    #to filter all files which are supported. 
+    finalFiles = []
+    for file in files: 
+        type = util.parse_media_type("", file)
+
+        if type == util.MediaType.AUDIO or type == util.MediaType.VIDEO:
+            finalFiles.append(file)
+        
+
     convert = lambda text: int(text) if text.isdigit() else text.lower()
     alphanum_key = lambda key: [ convert(c) for c in re.split('([0-9]+)', key) ] 
-    return sorted(files, key=alphanum_key)
+    fileList = sorted(finalFiles, key=alphanum_key)
+
+
+    return fileList
 
 def is_folder(path, file_idx):
     util.log(context_menu, f"{file_idx} {len(path) - 1}, {path[file_idx:].count('.')}")
@@ -21,9 +34,13 @@ def is_folder(path, file_idx):
 def get_player_offset(path, file_idx):
     dir_list = os.listdir(path[:file_idx])
     sorted_list = sorted_alphanumeric(dir_list)
+    util.setLastFile(sorted_list[-1])
+
     file_name = path[file_idx + 1:]
-    util.log(context_menu, f"directory: {sorted_list}")
+    util.log(context_menu, f"directory: {sorted_list} | file_name: {file_name}")
     return sorted_list.index(file_name) + 1
+    # return sorted_list.index(file_name) 
+
     
 
 def startPlaylist(): 

@@ -230,29 +230,30 @@
 							<visible>System.HasMediaDVD</visible>
 						</item>
 						<item>
-							<label>$LOCALIZE[3]</label>
-							<onclick>ActivateWindow(Video,Files)</onclick>
+							<label>Media</label>
+							<!-- <onclick>ActivateWindow(Video,Files)</onclick> -->
 							<property name="menu_id">$NUMBER[11000]</property>
 							<thumb>icons/sidemenu/videos.png</thumb>
 							<property name="id">video</property>
 							<visible>!Skin.HasSetting(HomeMenuNoVideosButton)</visible>
 						</item>
-						<item>
+						<!-- <item>
 							<label>$LOCALIZE[2]</label>
 							<onclick>ActivateWindow(Music,root,return)</onclick>
 							<property name="menu_id">$NUMBER[7000]</property>
 							<thumb>icons/sidemenu/music.png</thumb>
 							<property name="id">music</property>
 							<visible>!Skin.HasSetting(HomeMenuNoMusicButton)</visible>
-						</item>
+						</item> -->
 						<item>
 							<label>Settings</label>
 							<property name="menu_id">$NUMBER[90001]</property>
-							<onclick>ActivateWindow(settings)</onclick>
+							<!-- <onclick>ActivateWindow(settings)</onclick> -->
 							<thumb>icons/sidemenu/settings.png</thumb>
 							<visible>true</visible>
 							<property name="id">settings</property>
 						</item>
+					
 						<!-- <item>
 							<label>Connect</label>
 							<property name="menu_id">$NUMBER[91000]</property>
@@ -283,10 +284,91 @@
 				</control>
 			</control>
 
+			<control type="group">
+				
+				<control type="fixedlist" id="9988">
+					<left>0</left>
+					<top>150</top>
+					<width>462</width>
+					<bottom>-10</bottom>
+					<movement>7</movement>
+					<focusposition>0</focusposition>
+					<onfocus>ClearProperty(listposition,home)</onfocus>
+					<onright>SetFocus($INFO[Container(9000).ListItem.Property(menu_id)])</onright>
+					<onup>700</onup>
+					<ondown>700</ondown>
+					<scrolltime tween="cubic" easing="out">500</scrolltime>
+					
+					
+					<content>
+
+						<item>
+							<label>$LOCALIZE[427]</label>
+							<onclick>PlayDisc</onclick>
+							<property name="menu_id">$NUMBER[21000]</property>
+							<thumb>icons/sidemenu/disc.png</thumb>
+							<property name="id">disc</property>
+							<visible>System.HasMediaDVD</visible>
+						</item>
+						<item>
+							<label>Media</label>
+							<onclick>ActivateWindow(Video,Files)</onclick>
+							<property name="menu_id">$NUMBER[11000]</property>
+							<thumb>icons/sidemenu/videos.png</thumb>
+							<property name="id">video</property>
+							<visible>!Skin.HasSetting(HomeMenuNoVideosButton)</visible>
+						</item>
+						<!-- <item>
+							<label>$LOCALIZE[2]</label>
+							<onclick>ActivateWindow(Music,root,return)</onclick>
+							<property name="menu_id">$NUMBER[7000]</property>
+							<thumb>icons/sidemenu/music.png</thumb>
+							<property name="id">music</property>
+							<visible>!Skin.HasSetting(HomeMenuNoMusicButton)</visible>
+						</item> -->
+						<item>
+							<label>Settings</label>
+							<property name="menu_id">$NUMBER[90001]</property>
+							<!-- <onclick>ActivateWindow(settings)</onclick> -->
+							<thumb>icons/sidemenu/settings.png</thumb>
+							<visible>true</visible>
+							<property name="id">settings</property>
+						</item>
+						
+						<!-- <item>
+							<label>Connect</label>
+							<property name="menu_id">$NUMBER[91000]</property>
+							<thumb>icons/sidemenu/programs.png</thumb>
+							<visible>true</visible>
+							<property name="id">connect</property>
+						</item> -->
+
+					</content>
+				</control>
+				
+			</control>
+
+
 
 		</control>
 
-
+		<control type="label" id="9988">
+			<left>80</left>
+			<bottom>0</bottom>
+			<width>250</width>
+			<visible>true</visible>
+			<align>center</align>
+			<aligny>center</aligny>
+			<scroll>false</scroll>
+			<label>$INFO[Network.IPAddress]</label>
+			<haspath>false</haspath>
+			<font>font14</font>
+			<textcolor>FFB2D4F5</textcolor>
+			<shadowcolor>ff000000</shadowcolor>
+			<wrapmultiline>false</wrapmultiline>
+			<scrollspeed>50</scrollspeed>
+			<scrollsuffix> - </scrollsuffix>
+	  </control>
 	</controls>
 
 </window>

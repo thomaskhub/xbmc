@@ -349,6 +349,19 @@ bool CInputManager::OnEvent(XBMC_Event& newEvent)
     {
       bool handled = false;
 
+      //Thomas:: override the left mouse key and simulate return keycode instead
+      if(newEvent.type == XBMC_MOUSEBUTTONUP && newEvent.button.button == 1){
+        CKey key((uint32_t)13, (unsigned int) 13, 0,' ',0,0,0);
+        OnKeyUp(key);
+        break;
+      } else if (newEvent.type == XBMC_MOUSEBUTTONDOWN && newEvent.button.button == 1){
+        CKey key((uint32_t)13, (unsigned int) 13, 0,' ',0,0,0);
+        OnKey(key);
+        break;
+      }
+
+      break; //Thomas:: Do not process any other mouse event
+
       for (auto driverHandler : m_mouseHandlers)
       {
         switch (newEvent.type)

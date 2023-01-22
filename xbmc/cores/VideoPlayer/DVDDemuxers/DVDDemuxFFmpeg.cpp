@@ -522,9 +522,21 @@ bool CDVDDemuxFFmpeg::Open(const std::shared_ptr<CDVDInputStream>& pInput, bool 
         av_dict_set(&options, "decryption_iv", keyBlob.iv3.c_str(), 0);
         strFile.insert(0, "crypto:");
       }
-       else if (ext == "mp3") {
+      else if (ext == "mp3") {
          iformat = av_find_input_format("mp3");
-       }
+      }
+      else if (ext == "wav") {
+         iformat = av_find_input_format("wav");
+      }
+      else if (ext == "wma") {
+         iformat = av_find_input_format("wma");
+      }
+      else if (ext == "aac") {
+         iformat = av_find_input_format("aac");
+      }
+      else if (ext == "m4a") {
+        iformat = av_find_input_format("m4a");
+      }
     }
 
     if (avformat_open_input(&m_pFormatContext, strFile.c_str(), iformat, &options) < 0)

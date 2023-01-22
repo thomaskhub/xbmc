@@ -140,13 +140,14 @@
       <!-- MS Media Center keyboard shortcuts sent by MCE remotes -->
       <!-- See http://msdn.microsoft.com/en-us/library/bb189249.aspx -->
       <p mod="ctrl,shift">Play</p> <!-- Play -->
-      <s mod="ctrl,shift">Stop</s> <!-- Stop -->
+      
       <p mod="ctrl">Pause</p> <!-- Pause -->
       <f mod="ctrl,shift">FastForward</f> <!-- Fwd -->
       <b mod="ctrl,shift">Rewind</b> <!-- Rew -->
       <f mod="ctrl">SkipNext</f> <!-- Skip -->
       <b mod="ctrl">SkipPrevious</b> <!-- Replay -->
       <d mod="ctrl">Info</d> <!-- MCE Details -->
+      <s mod="ctrl">ActivateWindow(settings)</s> <!-- Open original settings for advanced users -->
       <r mod="ctrl">Record</r> <!-- Record -->
       <f4 mod="alt">PreviousMenu</f4> <!-- Exit -->
       <f10>VolumeUp</f10> <!-- MCE Vol up -->
@@ -341,21 +342,18 @@
       <v>ActivateWindow(Home)</v>
       <left>PlayerControl(SmallSkipBackward)</left>
       <right>PlayerControl(SmallSkipForward)</right>
-      <enter>RunScript(special://xbmc/addons/service.autopause/video-keyboard.py, 1)</enter> 
-      <return>RunScript(special://xbmc/addons/service.autopause/video-keyboard.py, 1)</return> 
+      <enter>RunScript(special://xbmc/addons/service.autopause/video-keyboard.py, enter)</enter> 
+      <return>RunScript(special://xbmc/addons/service.autopause/video-keyboard.py, enter)</return> 
       <space>RunScript(special://xbmc/addons/service.autopause/video-keyboard.py, 1)</space> 
+      <backspace>noop</backspace>
     </keyboard>
   </window1200>
   <window1201>
     <keyboard>
-      <n>ActivateWindow(12006)</n>
-      <b>ActivateWindow(10114)</b>
-      <v>ActivateWindow(10145)</v>
-      <s>ActivateWindow(10145)</s>
-
       <enter>RunScript(special://xbmc/addons/service.autopause/video-keyboard.py, enter)</enter> 
       <return>RunScript(special://xbmc/addons/service.autopause/video-keyboard.py, enter)</return> 
       <space>RunScript(special://xbmc/addons/service.autopause/video-keyboard.py, 1)</space> 
+      <backspace>noop</backspace>
     </keyboard>
   </window1201>
   <FullscreenVideo>
@@ -377,9 +375,9 @@
       <closesquarebracket>BigStepBack</closesquarebracket>
       <return>OSD</return>
       <enter>OSD</enter>
-      <return mod="longpress">PlayPause</return>
+      <!-- <return mod="longpress">PlayPause</return>
       <enter mod="longpress">PlayPause</enter>
-      <m>OSD</m>
+      <m>OSD</m> -->
       <menu>OSD</menu>
       <i>Info</i>
       <o>PlayerProcessInfo</o>
@@ -472,6 +470,7 @@
       <o>PlayerProcessInfo</o>
       <l>LockPreset</l>
       <escape>FullScreen</escape>
+      <backspace>ActivateWindow(11201)</backspace>
     </keyboard>
   </Visualisation>
   <MusicOSD>
@@ -488,6 +487,7 @@
       <v>Addon.Default.OpenSettings(xbmc.player.musicviz)</v>
       <text>Addon.Default.OpenSettings(xbmc.player.musicviz)</text>
       <n>ActivateWindow(MusicPlaylist)</n>
+      <backspace>ActivateWindow(11201)</backspace>
     </keyboard>
   </MusicOSD>
   <VisualisationPresetList>

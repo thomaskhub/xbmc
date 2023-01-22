@@ -4,7 +4,8 @@ import xbmcaddon
 
 audio_dot = "audio_dot"
 
-AudioExtensions = ['.mp3', '.m4a', '.wma', '.wav']
+AudioExtensions = ['.mp3', '.m4a', ".wma", ".wav", ".aac", ".enc1", ".enc2", ".enc3"]
+VideoExtensions = ['.mp4', ".enc1", ".enc2", ".enc3"]
 
 class MediaType:
     NONE = 0
@@ -43,7 +44,11 @@ def parse_media_type(logName, filename):
     if AudioExtensions.count(file_ext):
         log(logName, "AN AUDIO FILE IS PLAYING")
         return MediaType.AUDIO
-    return MediaType.VIDEO
+    
+    if VideoExtensions.count(file_ext):
+        return MediaType.VIDEO
+
+    return MediaType.NONE
 
 
 def activate_window(window_id):
@@ -63,6 +68,15 @@ def _activate_window_by_media(window_id, media_type):
 def activate_window_by_media(window_id, media_type, num=1):
     for _ in range(num):
         _activate_window_by_media(window_id, media_type)
+
+def setLastFile(file):
+    window = xbmcgui.Window(KodiWindowId.screensaver_window)
+    return window.setProperty("lastFile", file)
+
+def getLastFile():
+    window = xbmcgui.Window(KodiWindowId.screensaver_window)
+    return window.getProperty("lastFile") 
+
 
 class KodiWindowId:
     screensaver_window = 11200

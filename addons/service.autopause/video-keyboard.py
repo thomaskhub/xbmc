@@ -4,13 +4,13 @@ import sys
 
 from resources.lib import utilities as util
 
-util.log("thomas -->", ' '.join(sys.argv[1:]))
 
 
 keyboard_script = "Keyboard Script"
 
 if "enter" in sys.argv[1]:
     if util.isPaused() == "1":
+        util.setPaused("0")
         xbmc.Player().pause()
     else: 
         xbmc.executebuiltin(f'ActivateWindow(12006)')
