@@ -1175,6 +1175,11 @@
 						<onclick>ActivateWindow(systeminfo)</onclick>
 						<icon>icons/settings/sysinfo.png</icon>
 					</item>
+					<item>
+						<label>Autopause</label>
+						<onclick>RunScript(special://xbmcbinaddons/service.autopause/open-settings-dialog.py, 1)</onclick>
+						<icon>icons/sidemenu/settings.png</icon>
+					</item>
 				</content>
 			</control>
 		</control>

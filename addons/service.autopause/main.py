@@ -1,5 +1,4 @@
 import xbmc
-import xbmcgui
 
 from resources.lib import utilities as util
 from resources.lib import XBMCPlayer
