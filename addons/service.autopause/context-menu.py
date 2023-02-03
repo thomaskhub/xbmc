@@ -50,7 +50,7 @@ def startPlaylist():
     path = sys.listitem.getPath()
 
     media_type = util.parse_media_type(context_menu, path)
-    util.activate_window_by_media(util.AutoPauseWindowId.screensaver_window, media_type)
+    util.activate_window_by_media(util.AutoPauseScreensaver.id, media_type)
 
     file_idx = path.rfind('/')
     file_idx = file_idx if file_idx >= 0 else path.rfind('\\')

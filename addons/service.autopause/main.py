@@ -15,6 +15,8 @@ util.enablePlaylist("0")
 player = XBMCPlayer()
 monitor = xbmc.Monitor()
 
+# xbmc.executebuiltin(f'ActivateWindow(10004)')
+
 while not monitor.abortRequested():
     if monitor.waitForAbort(1):
         # del player
