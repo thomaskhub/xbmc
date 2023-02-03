@@ -56,10 +56,10 @@ def activate_window(window_id):
     xbmc.executebuiltin(f'ActivateWindow({window_id})')
 
 def _activate_window_by_media(window_id, media_type):
+    set_screensaver_dot_color(media_type)
+    
     if media_type == MediaType.AUDIO:
-        idx = int(xbmcaddon.Addon().getSetting(audio_dot))
-        window_id = list(AutoPauseWindowId().audio_screensavers.values())[idx]
-        activate_window(window_id)
+        activate_window(AutoPauseScreensaver.id)
         return
 
     if not xbmcgui.getCurrentWindowId() == window_id: 
@@ -77,27 +77,26 @@ def getLastFile():
     window = xbmcgui.Window(KodiWindowId.screensaver_window)
     return window.getProperty("lastFile") 
 
+def set_screensaver_dot_color(media_type):
+    color = ""
+    if media_type == MediaType.AUDIO:
+        idx = int(xbmcaddon.Addon().getSetting(audio_dot))
+        color = list(AutoPauseScreensaver.dot_colors)[idx]
+    if media_type == MediaType.VIDEO:
+        color = AutoPauseScreensaver.dot_colors['black']
+    xbmcgui.Window(AutoPauseScreensaver.kodi_id).setProperty('color', color)
 
 class KodiWindowId:
     screensaver_window = 11200
-    white_audio_screensaver_window = 11201
-    grey_audio_screensaver_window = 11202
     video_window = 12005
     music_window = 12502 
     video_nav_window = 10025
-
-    def __init__(self):
-        self.screensaver_ids = [KodiWindowId.screensaver_window, KodiWindowId.white_audio_screensaver_window, KodiWindowId.grey_audio_screensaver_window]
-
         
-class AutoPauseWindowId:
-    screensaver_window = 1200
-    white_audio_screensaver_window = 1201
-    grey_audio_screensaver_window = 1202
-
-    def __init__(self):
-        self.audio_screensavers = {
-            "White": AutoPauseWindowId.white_audio_screensaver_window,
-            "Grey": AutoPauseWindowId.grey_audio_screensaver_window,
-            "Disabled": AutoPauseWindowId.screensaver_window
-        }
+class AutoPauseScreensaver:
+    id = 1200
+    kodi_id = KodiWindowId.screensaver_window
+    dot_colors = {
+        'white': 'white',
+        'grey': '4fffffff',
+        'black': 'black'
+    }

@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <!-- Placed in
     <your Kodi install dir>\addons\skin.simple\xml
 
@@ -8,8 +9,21 @@
     https://kodi.wiki/view/HOW-TO:Add_a_new_window_or_dialog_via_skinning
  -->
 
-<?xml version="1.0" encoding="utf-8"?>
 <window id="1200" type="window">
     <backgroundcolor>black</backgroundcolor>
     <stretchmode>Fullscreen</stretchmode>
+    <controls>
+        <control type="group">
+            <control type="label">
+                <description>Ishanga White Dot</description>
+                <!-- I am not sure what the max lengths are....or how to use right and bottom tags...have to test on different screen sizes. for resizing windows, it works as intended -->
+                <left>1850</left>
+                <top>1000</top>
+                <label>.</label>
+                <textcolor>$INFO[Window(11200).Property(color)]</textcolor>
+                <font>font52_title</font>
+            </control>
+        </control>
+    </controls>
+    
 </window>

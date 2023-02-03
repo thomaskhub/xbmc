@@ -22,7 +22,7 @@ else:
         util.log(keyboard_script, "SPACE BUTTON TOGGLED")
         xbmc.Player().pause()
 
-    elif util.KodiWindowId().screensaver_ids.count(xbmcgui.getCurrentWindowId()):
+    elif util.KodiWindowId.screensaver_window == xbmcgui.getCurrentWindowId():
         xbmc.executebuiltin('InhibitScreensaver(false)')
         xbmc.executebuiltin('Dialog.Close(all, true)')
         xbmc.executebuiltin(f'ActivateWindow({util.KodiWindowId.video_nav_window})')

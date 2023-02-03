@@ -18,7 +18,7 @@ class XBMCPlayer(xbmc.Player):
         if util.isPlaylistEnabled() == "0": 
             return
 
-        util.activate_window_by_media(util.AutoPauseWindowId.screensaver_window, self.media_type, 5)
+        util.activate_window_by_media(util.AutoPauseScreensaver.id, self.media_type, 5)
 
     def onPlayBackStarted(self):
         if util.isPlaylistEnabled() == "0": 
@@ -32,7 +32,7 @@ class XBMCPlayer(xbmc.Player):
         util.log(name, f"VIDEO PLAYBACK STARTED FOR {filename}")
 
         xbmc.executebuiltin('InhibitScreensaver(true)')
-        util.activate_window_by_media(util.AutoPauseWindowId.screensaver_window, self.media_type, 5)
+        util.activate_window_by_media(util.AutoPauseScreensaver.id, self.media_type, 5)
 
         if ".skip." in filename:
            
@@ -50,7 +50,7 @@ class XBMCPlayer(xbmc.Player):
         if util.isPlaylistEnabled() == "0": 
             return
 
-        util.activate_window_by_media(util.AutoPauseWindowId.screensaver_window, self.media_type)
+        util.activate_window_by_media(util.AutoPauseScreensaver.id, self.media_type)
         
 
     def onPlayBackResumed(self):
