@@ -35,3 +35,7 @@ msgstr ""
 msgctxt "#30804"
 msgid "Disabled"
 msgstr ""
+
+msgctxt "#30805"
+msgid "Display Audio Timer"
+msgstr ""
