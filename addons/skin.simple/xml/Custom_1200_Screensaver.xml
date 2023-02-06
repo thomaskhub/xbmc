@@ -8,22 +8,30 @@
     https://kodi.wiki/view/HOW-TO:Add_a_new_view_type_to_the_skin
     https://kodi.wiki/view/HOW-TO:Add_a_new_window_or_dialog_via_skinning
  -->
-
 <window id="1200" type="window">
-    <backgroundcolor>black</backgroundcolor>
-    <stretchmode>Fullscreen</stretchmode>
-    <controls>
-        <control type="group">
-            <control type="label">
-                <description>Ishanga White Dot</description>
-                <!-- I am not sure what the max lengths are....or how to use right and bottom tags...have to test on different screen sizes. for resizing windows, it works as intended -->
-                <left>1850</left>
-                <top>1000</top>
-                <label>.</label>
-                <textcolor>$INFO[Window(11200).Property(color)]</textcolor>
-                <font>font52_title</font>
-            </control>
-        </control>
-    </controls>
-    
+	<backgroundcolor>black</backgroundcolor>
+	<stretchmode>Fullscreen</stretchmode>
+	<controls>
+		<control type="label">
+			<visible>String.IsEqual(Window(11200).Property(media_type),2) + String.IsEqual(Window(11200).Property(is_timer_displayed),true)</visible>
+			<bottom>10</bottom>
+			<height>50</height>
+			<aligny>center</aligny>
+			<align>center</align>
+			<label>$INFO[MusicPlayer.Time]/$INFO[MusicPlayer.Duration]</label>
+			<font>font52_title</font>
+		</control>
+		<control type="label">
+			<description>Ishanga White Dot</description>
+			<height>10</height>
+			<aligny>center</aligny>
+			<align>right</align>
+			<right>20</right>
+			<bottom>30</bottom>
+			<label>.</label>
+			<textcolor>$INFO[Window(11200).Property(color)]</textcolor>
+			<!-- For built in font sizes, see ./Font.xml -->
+			<font>font52_title</font>
+		</control>
+	</controls>
 </window>

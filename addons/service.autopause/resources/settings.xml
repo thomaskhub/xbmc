@@ -1,12 +1,13 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <!-- 
 	Note:
 	For label id references, please refer to 
 	./language/resource.language.en_gb/strings.po
 	(can't enter text for lvalues)
 -->
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <settings>
-    <category label="30800">
-        <setting label="30801" type="select" id="audio_dot" lvalues="30802|30803|30804"/>
+	<category label="30800">
+		<setting label="30805" type="bool" id="audio_timer" default="true" />
+		<setting label="30801" type="select" id="audio_dot" lvalues="30802|30803|30804"/>
 	</category>
 </settings>
