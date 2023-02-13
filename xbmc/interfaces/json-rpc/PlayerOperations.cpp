@@ -2103,6 +2103,68 @@ JSONRPC_STATUS CPlayerOperations::SetKeys(const std::string& method,
   return OK;
 }
 
+struct response
+{
+  char* memory;
+  size_t size;
+};
+
+static size_t post_body_callback(char* contents, size_t size, size_t nmemb, void* userp)
+{
+  size_t realsize = size * nmemb;
+  struct response* mem = (struct response*)userp;
+
+  char* ptr = (char*)realloc((void*)mem->memory, mem->size + realsize + 1);
+  if (!ptr)
+  {
+    /* out of memory! */
+    printf("not enough memory (realloc returned NULL)\n");
+    return 0;
+  }
+
+  mem->memory = ptr;
+  memcpy(&(mem->memory[mem->size]), contents, realsize);
+  mem->size += realsize;
+  mem->memory[mem->size] = 0;
+
+
+  return realsize;
+}
+
+JSONRPC_STATUS CPlayerOperations::Post(const std::string& method,
+                                       ITransportLayer* transport,
+                                       IClient* client,
+                                       const CVariant& parameterObject,
+                                       CVariant& result)
+{
+  CURLcode code;
+  CURL_HANDLE* curl;
+  XCURL::DllLibCurlGlobal g_curlInterface;
+
+  g_curlInterface.global_init(CURL_GLOBAL_ALL);
+  curl = g_curlInterface.easy_init();
+
+  struct response chunk = {.memory = (char*)malloc(0), .size = 0};
+
+  g_curlInterface.easy_setopt(curl, CURLOPT_URL, parameterObject["url"].asString().c_str());
+  g_curlInterface.easy_setopt(curl, CURLOPT_POSTFIELDS, parameterObject["body"].asString().c_str());
+  g_curlInterface.easy_setopt(curl, CURLOPT_WRITEFUNCTION, post_body_callback);
+  g_curlInterface.easy_setopt(curl, CURLOPT_WRITEDATA, (void*)&chunk);
+  code = g_curlInterface.easy_perform(curl);
+
+  if (code != CURLE_OK)
+  {
+    printf("curl_easy_perform() failed: %s\n", g_curlInterface.easy_strerror(code));
+  }
+
+  result = CVariant(chunk.memory);
+  free(chunk.memory);
+
+  g_curlInterface.easy_cleanup(curl);
+
+  return OK;
+}
+
 
 int CPlayerOperations::ParseRepeatState(const CVariant& repeat)
 {

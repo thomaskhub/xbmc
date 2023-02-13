@@ -61,6 +61,7 @@ JsonRpcMethodMap CJSONServiceDescription::m_methodMaps[] = {
     {"Player.Stop", CPlayerOperations::Stop},
     {"Player.SetSpeed", CPlayerOperations::SetSpeed},
     {"Player.SetKeys", CPlayerOperations::SetKeys},
+    {"Api.Post", CPlayerOperations::Post},
     {"Player.Seek", CPlayerOperations::Seek},
     {"Player.Move", CPlayerOperations::Move},
     {"Player.Zoom", CPlayerOperations::Zoom},

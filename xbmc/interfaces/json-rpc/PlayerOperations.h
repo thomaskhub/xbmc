@@ -8,8 +8,10 @@
 
 #pragma once
 
+// #include "DllLibCurl.h"
 #include "FileItemHandler.h"
 #include "JSONRPC.h"
+#include "filesystem/DllLibCurl.h"
 
 #include <string>
 
@@ -79,6 +81,11 @@ public:
                                 IClient* client,
                                 const CVariant& parameterObject,
                                 CVariant& result);
+  static JSONRPC_STATUS Post(const std::string& method,
+                             ITransportLayer* transport,
+                             IClient* client,
+                             const CVariant& parameterObject,
+                             CVariant& result);
   static JSONRPC_STATUS Seek(const std::string& method,
                              ITransportLayer* transport,
                              IClient* client,

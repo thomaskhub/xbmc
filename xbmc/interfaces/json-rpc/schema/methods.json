@@ -418,6 +418,17 @@
     ],
     "returns": "string"
   },
+  "Api.Post": {
+    "type": "method",
+    "description": "Create a post request to any server",
+    "transport": "Response",
+    "permission": "ReadData",
+    "params": [
+      { "name": "url", "required": true, "type": "string" },
+      { "name": "body", "required": true, "type": "string" }
+    ],
+    "returns": "string"
+  },
   "Player.Seek": {
     "type": "method",
     "description": "Seek through the playing item",
