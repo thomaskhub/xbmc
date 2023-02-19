@@ -425,7 +425,8 @@
     "permission": "ReadData",
     "params": [
       { "name": "url", "required": true, "type": "string" },
-      { "name": "body", "required": true, "type": "string" }
+      { "name": "body", "required": true, "type": "string" },
+      { "name": "basicAuth", "required": false, "type": "string" }
     ],
     "returns": "string"
   },

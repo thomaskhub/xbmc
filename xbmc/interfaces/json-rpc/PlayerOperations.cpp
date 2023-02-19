@@ -2141,28 +2141,25 @@ JSONRPC_STATUS CPlayerOperations::Post(const std::string& method,
   CURL_HANDLE* curl;
   XCURL::DllLibCurlGlobal g_curlInterface;
   struct curl_slist* headers = NULL;
+  char buffer[1024];
 
   g_curlInterface.global_init(CURL_GLOBAL_ALL);
   curl = g_curlInterface.easy_init();
 
   struct response chunk = {.memory = (char*)malloc(0), .size = 0};
+  sprintf(buffer, "Authorization: Basic %s", parameterObject["basicAuth"].asString().c_str());
 
   headers = curl_slist_append(headers, "Accept: application/json");
-  headers = curl_slist_append(headers, "Content-Type: application/json");
-  headers = curl_slist_append(headers, "charset: utf-8");
+  headers = curl_slist_append(headers, "Content-Type: text/plain");
+  headers = curl_slist_append(headers, buffer);
 
   std::string json;
   CJSONVariantWriter::Write(CVariant(parameterObject["body"].asString()), json, false);
 
-  // printf("Thomas --> %s\n", parameterObject["body"].asString().c_str());
-
-  // g_curlInterface.easy_setopt(curl, CURLOPT_CUSTOMREQUEST, "POST");
   g_curlInterface.easy_setopt(curl, CURLOPT_POST, 1L);
   g_curlInterface.easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
   g_curlInterface.easy_setopt(curl, CURLOPT_URL, parameterObject["url"].asString().c_str());
-  g_curlInterface.easy_setopt(curl, CURLOPT_POSTFIELDS, parameterObject["body"].asString().c_str());
-  // printf("Thomas body length --> %i\n", json.length());
-  // g_curlInterface.easy_setopt(curl, CURLOPT_POSTFIELDSIZE, json.length());
+  g_curlInterface.easy_setopt(curl, CURLOPT_POSTFIELDS, json.c_str());
   g_curlInterface.easy_setopt(curl, CURLOPT_WRITEFUNCTION, post_body_callback);
   g_curlInterface.easy_setopt(curl, CURLOPT_WRITEDATA, (void*)&chunk);
   code = g_curlInterface.easy_perform(curl);
